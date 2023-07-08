@@ -24,6 +24,7 @@ def captureUserName():
 	print("You entered: ", firstName,"", lastName)
 
 	# This last statement is used to provide a pause at the end of the file so the user can read the previous output
+	# The \n tells the terminal to insert a new line
 	input("\n\nPress the enter key to exit.")
 
 captureUserName()
