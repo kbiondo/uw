@@ -27,4 +27,5 @@ def captureUserName():
 	# The \n tells the terminal to insert a new line
 	input("\n\nPress the enter key to exit.")
 
+#This last statement runs the function that was created above
 captureUserName()
