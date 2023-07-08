@@ -4,7 +4,7 @@
 
 # The following lines are python statements that python will execute one at a time (line by line)
 
-# The first statement will create a function which will contain executable 
+# The first statement will create a function which will contain a group of statements
 # Indentation is used define a group of statements that reside inside the function
 def captureUserName():
 
