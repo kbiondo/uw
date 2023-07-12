@@ -1,5 +1,10 @@
 # ----------------------------------------------- #
-# Assignment #1 - A simple script to capture user first name and last name and print it back to the user
+# Title: Assignment #1 
+# Desc: A simple script to capture user first name and last name and print it back to the user
+# Changelog: (who, when, what)
+# 	kbiondich,7/8/23,Created File
+# ------------------------------------------------#
+
 # These first few lines are comments indicated by the 'pound' character 
 
 # The following lines are python statements that python will execute one at a time (line by line)
