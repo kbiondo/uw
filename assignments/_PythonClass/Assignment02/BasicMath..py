@@ -25,18 +25,22 @@ num2 = float(num2)
 sumResult = num1 + num2
 print(sumResult)
 
+input()
 
 # Find the difference of the 2 inputs
 difResult = num1 - num2
 print(difResult)
 
+input()
 
 # Find the product of the 2 inputs
 prodResult = num1 * num2
 print(prodResult)
 
+input()
 
 # Find the quotient of the 2 inputs
 quotResult = num1 / num2
 print(quotResult)
 
+input()
