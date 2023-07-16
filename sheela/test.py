@@ -1,0 +1,5 @@
+#print("Please enter your first name")
+firstname=input("Please enter your first name: ")
+#print("Please enter your last name")
+lastname= input("Please enter your last name: ")
+print("You entered:", firstname, lastname)
