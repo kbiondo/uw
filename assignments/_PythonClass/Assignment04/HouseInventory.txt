@@ -1,3 +1,4 @@
 Item  |  Value 
 ======================================== 
-cat | dog
+meow | cats
+dog | bark
