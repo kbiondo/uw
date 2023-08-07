@@ -1,7 +1,0 @@
-dog,1
-house,2
-you,3
-car,4
-mine,2
-ine,2
-new task,4
