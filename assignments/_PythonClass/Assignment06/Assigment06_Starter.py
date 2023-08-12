@@ -25,15 +25,14 @@ class Processor:
     @staticmethod
     def read_data_from_file(file_name, list_of_rows):
         # Ensure the file exists so it doesn't error
-        file_obj = open(file_name, "a") 
+        create_file = open(file_name, "a") 
         # Reads data from a file into a list of dictionary rows
         list_of_rows.clear()  # clear current data
-        file_obj = open(file_name, "r")
-        for line in file_obj:
+        read_file = open(file_name, "r")
+        for line in read_file:
             task, priority = line.split(",")
             row_dic = {"Task": task.strip(), "Priority": priority.strip()}
             list_of_rows.append(row_dic)
-        file_obj.close()
         return list_of_rows
     
     @staticmethod
@@ -79,10 +78,10 @@ class Processor:
         :return: (list) of dictionary rows
         """
         # TODO: Add Code Here!
-        file_obj = open(file_name, "a")
+        write_file = open(file_name, "a")
         for items in list_of_rows:
-            file_obj.write(items['task'] + ',' + items['priority'])
-        file_obj.close()
+            write_file.write(items['task'] + ',' + items['priority'])
+        write_file.close()
         return list_of_rows
 
 
@@ -149,7 +148,7 @@ class IO:
         """
         pass  
     # TODO Add Code Here!
-        findTask = input("Enter Task to Remove")
+        findTask = input("Enter Task to Remove: ")
         return findTask
 
 
