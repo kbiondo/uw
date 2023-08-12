@@ -24,12 +24,11 @@ class Processor:
 
     @staticmethod
     def read_data_from_file(file_name, list_of_rows):
+        # Ensure the file exists so it doesn't error
+        file_obj = open(file_name, "a") 
         # Reads data from a file into a list of dictionary rows
         list_of_rows.clear()  # clear current data
-        try:
-            file_obj = open(file_name, "r")
-        except:
-            file_obj = open(file_name, "a") # Ensure the file exists so it doesn't error
+        file_obj = open(file_name, "r")
         for line in file_obj:
             task, priority = line.split(",")
             row_dic = {"Task": task.strip(), "Priority": priority.strip()}
@@ -83,7 +82,7 @@ class Processor:
         file_obj = open(file_name, "a")
         for items in list_of_rows:
             file_obj.write(items['task'] + ',' + items['priority'])
-
+        file_obj.close()
         return list_of_rows
 
 
