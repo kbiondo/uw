@@ -1,3 +1,6 @@
 [submodule "assignments/_PythonClass/Assignment05/IntroToProg-Python"]
 	path = assignments/_PythonClass/Assignment05/IntroToProg-Python
 	url = https://github.com/kbiondo/IntroToProg-Python.git
+[submodule "assignments/_PythonClass/IntroToProg-Python-Mod06"]
+	path = assignments/_PythonClass/IntroToProg-Python-Mod06
+	url = https://github.com/kbiondo/IntroToProg-Python-Mod06.git
