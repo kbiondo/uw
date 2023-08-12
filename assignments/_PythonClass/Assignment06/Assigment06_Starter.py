@@ -24,21 +24,19 @@ class Processor:
 
     @staticmethod
     def read_data_from_file(file_name, list_of_rows):
-        """ Reads data from a file into a list of dictionary rows
-
-        :param file_name: (string) with name of file:
-        :param list_of_rows: (list) you want filled with file data:
-        :return: (list) of dictionary rows
-        """
+        # Reads data from a file into a list of dictionary rows
         list_of_rows.clear()  # clear current data
-        file = open(file_name, "r")
-        for line in file:
+        try:
+            file_obj = open(file_name, "r")
+        except:
+            file_obj = open(file_name, "a") # Ensure the file exists so it doesn't error
+        for line in file_obj:
             task, priority = line.split(",")
-            row = {"Task": task.strip(), "Priority": priority.strip()}
-            list_of_rows.append(row)
-        file.close()
+            row_dic = {"Task": task.strip(), "Priority": priority.strip()}
+            list_of_rows.append(row_dic)
+        file_obj.close()
         return list_of_rows
-
+    
     @staticmethod
     def add_data_to_list(task, priority, list_of_rows):
         """ Adds data to a list of dictionary rows
@@ -48,10 +46,13 @@ class Processor:
         :param list_of_rows: (list) you want to add more data to:
         :return: (list) of dictionary rows
         """
-        row = {"Task": str(task).strip(), "Priority": str(priority).strip()}
+        row_dic = {"Task": str(task).strip(), "Priority": str(priority).strip()}
         # TODO: Add Code Here!
-
-
+        for items in list_of_rows:
+            if items["Task"] != task:
+               list_of_rows.append(row_dic['task'], row_dic['piority'])
+            else: 
+                continue
         return list_of_rows
 
     @staticmethod
@@ -63,7 +64,11 @@ class Processor:
         :return: (list) of dictionary rows
         """
         # TODO: Add Code Here!
-
+        for items in list_of_rows:
+            if items['task'] == task:
+                list_of_rows[items].pop()
+            else:
+                continue
         return list_of_rows
 
     @staticmethod
@@ -75,6 +80,10 @@ class Processor:
         :return: (list) of dictionary rows
         """
         # TODO: Add Code Here!
+        file_obj = open(file_name, "a")
+        for items in list_of_rows:
+            file_obj.write(items['task'] + ',' + items['priority'])
+
         return list_of_rows
 
 
@@ -129,6 +138,9 @@ class IO:
         :return: (string, string) with task and priority
         """
         pass  # TODO: Add Code Here!
+        task = input("Enter a task: ")
+        priority = input("Enter a priority: ")
+        return task, priority
 
     @staticmethod
     def input_task_to_remove():
@@ -136,7 +148,11 @@ class IO:
 
         :return: (string) with task
         """
-        pass  # TODO: Add Code Here!
+        pass  
+    # TODO Add Code Here!
+        findTask = input("Enter Task to Remove")
+        return findTask
+
 
 
 # Main Body of Script  ------------------------------------------------------ #
