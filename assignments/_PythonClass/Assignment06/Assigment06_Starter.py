@@ -16,7 +16,7 @@ file_obj = None  # An object that represents a file
 row_dic = {}  # A row of data separated into elements of a dictionary {Task,Priority}
 table_lst = []  # A list that acts as a 'table' of rows
 choice_str = ""  # Captures the user option selection
-
+check_file = open(file_name_str, "a") # Checks if file exists, if not creates it
 
 # Processing  --------------------------------------------------------------- #
 class Processor:
@@ -24,14 +24,12 @@ class Processor:
 
     @staticmethod
     def read_data_from_file(file_name, list_of_rows):
-        # Ensure the file exists so it doesn't error
-        create_file = open(file_name, "a") 
         # Reads data from a file into a list of dictionary rows
         list_of_rows.clear()  # clear current data
         read_file = open(file_name, "r")
         for line in read_file:
             task, priority = line.split(",")
-            row_dic = {"Task": task.strip(), "Priority": priority.strip()}
+            row_dic = {"Task": str(task).strip(), "Priority": str(priority).strip()}
             list_of_rows.append(row_dic)
         return list_of_rows
     
@@ -64,7 +62,7 @@ class Processor:
         # TODO: Add Code Here!
         for items in list_of_rows:
             if items['task'] == task:
-                list_of_rows[items].pop()
+                list_of_rows.remove(items)
             else:
                 continue
         return list_of_rows
@@ -136,8 +134,9 @@ class IO:
         :return: (string, string) with task and priority
         """
         pass  # TODO: Add Code Here!
-        task = input("Enter a task: ")
-        priority = input("Enter a priority: ")
+        task = str(input("Enter a task: "))
+        priority = str(input("Enter a priority: "))
+        row_dic = {"Task": task, "Priority": priority}
         return task, priority
 
     @staticmethod
