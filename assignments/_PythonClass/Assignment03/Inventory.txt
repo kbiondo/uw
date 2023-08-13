@@ -1,0 +1,2 @@
+Item: Milk Value: $100
+Item: Cats Value: Priceless
