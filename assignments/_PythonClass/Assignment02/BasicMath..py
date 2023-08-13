@@ -6,87 +6,91 @@
 # 	kbiondich,7/14/23,Created File
 # ------------------------------------------------#
 
-## Get user input and convert the data types to numbers
+## Get user input
+def capture_responses(question):
+    responses = []
 
-string1 = input("Enter a first number: ")
-string2 = input("Enter second number: ")
+    responses.append("Enter a first number: ")
+    responses.append("Enter a second number: ")
 
+    return responses
 
+# Convert strings to a number data type
 
-# Convert the string values to floats and integers to do math
-
-def num(s):
+def convert_to_num(s):
     try:
         return int(s)
     except ValueError:
         return float(s)
 
-
-## Perform calculations on the inputs:
-
 # Computem the sum of the two variables
-def sumResult (value1, value2):
 
-    # ## ensure the variables are the float data type
-    value1 = num(value1)
-    value2 = num(value2)
-    
-    # add the values to each other with the addition opperand 
-    sumValue = value1 + value2
+def sum_values(values):
 
+    sum_values = [].append(values)
+    # add the values to each other with the addition opperand
+    for i in sum_values:
+        sum_results += sum_values[i]
+            
     ## Print the result
-    print(f'\nThe sum of {value1} and {value2} is: {sumValue}')
-    return value1, value2
+    print(f'\nThe sum of {sum_values[0]} and {sum_values[1]} is: {sum_values}')
 
 # Find the difference of the two inputs
-def difResult (value1, value2):
+
+def dif_result (values):
 
     # ## ensure the data types of the paraments are numbers
-    value1 = num(value1)
-    value2 = num(value2)
 
     # find the absolute value of the difference between the values
-    difValue = abs(value1 - value2)
+    dif_values = [].append(values)
+    
+    for i in dif_values:
+        
+        dif_results -= abs(dif_values[i])
+        
 
     # print the result
-    print(f"The difference between {value1} and {value2} is: {difValue}")
-    # return value1, value2
+    print(f"The difference between {dif_values[0]} and {dif_values[1]} is: {dif_results}")
+
 
 # Find the product of the 2 inputs
 
-def prodResult (value1,value2):
+def prod_result (values):
 
     # ## ensure the data types of the paraments are numbers
-    value1 = num(value1)
-    value2 = num(value2)
 
-    # find the product of value1 * value2
-    prodValue = (value1*value2)
+    # find the product of string1 * string2
+    prod_value = [].append(values)
 
     # Print the result
-    print(f"The product of {value1} times {value2} is: {prodValue}")
-    # return value1, value2
+    print(f"The product of {prod1} times {prod2} is: {prod_value}")
+
 
 # Find the quotient of the 2 inputs
-def quotResult (value1, value2):
+def quot_result (quot1, quot2):
 
     # ## ensure the data types of the paraments are numbers
-    value1 = num(value1)
-    value2 = num(value2)
 
-    # find the quotient of value1 divided by value2
-    quoValue = float(value1 / value2)
+    # find the quotient of string1 divided by string2
+    quot_value = float(quot1 / quot2)
 
     #Print the result
-    print(f"The quotient of {value1} divided by {value2} is: {quoValue}")
-    return (value1, value2)
+    print(f"The quotient of {quot_string1} divided by {quot_string2} is: {quot_value}")
+    return (quot_string1, quot_string2)
 
 # Define the starting point of the script
 
-def main(value1, value2):
-    sumResult(value1, value2)
-    difResult(value1, value2)
-    prodResult(value1, value2)
-    quotResult(value1, value2)
+def main():
+    
+    captured_inputs = []
+    
+    captured_inputs[0] = input("Enter a first number: ")
+    captured_inputs[1] = input("Enter second number: ")
+
+    
+    sum_result( )
+    dif_result( )
+    prod_result()
+    quot_result()
 
 main(string1, string2)
