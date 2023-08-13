@@ -16,7 +16,7 @@ file_obj = None  # An object that represents a file
 row_dic = {}  # A row of data separated into elements of a dictionary {Task,Priority}
 table_lst = []  # A list that acts as a 'table' of rows
 choice_str = ""  # Captures the user option selection
-check_file = open(file_name_str, "a") # Checks if file exists, if not creates it
+
 
 # Processing  --------------------------------------------------------------- #
 class Processor:
@@ -24,13 +24,23 @@ class Processor:
 
     @staticmethod
     def read_data_from_file(file_name, list_of_rows):
+        """reads data from a file into a list of dictionary rows
+
+        Args:
+            file_name (string): name of the file
+            list_of_rows (list): list of dictionary rows
+
+        Returns:
+            list: list of dictionary rows
+        """        
         # Reads data from a file into a list of dictionary rows
+        file_obj = open(file_name, "a")
         list_of_rows.clear()  # clear current data
-        read_file = open(file_name, "r")
-        for line in read_file:
-            task, priority = line.split(",")
-            row_dic = {"Task": str(task).strip(), "Priority": str(priority).strip()}
-            list_of_rows.append(row_dic)
+        file_obj = open(file_name, "r")
+        for row in file_obj:
+            file_data = row.split(",")
+            row_dic = {"Task": file_data[0].strip(), "Priority": file_data[1].strip()}
+            list_of_rows = list_of_rows.append(row_dic)
         return list_of_rows
     
     @staticmethod
@@ -42,13 +52,12 @@ class Processor:
         :param list_of_rows: (list) you want to add more data to:
         :return: (list) of dictionary rows
         """
-        row_dic = {"Task": str(task).strip(), "Priority": str(priority).strip()}
-        # TODO: Add Code Here!
+        row_dic = {"Task": task.strip(), "Priority": priority.strip()}
         for items in list_of_rows:
-            if items["Task"] != task:
-               list_of_rows.append(row_dic['task'], row_dic['piority'])
-            else: 
-                continue
+            if items["Task"] == task:
+                return list_of_rows
+            else:
+                list_of_rows.append(row_dic)
         return list_of_rows
 
     @staticmethod
@@ -61,7 +70,7 @@ class Processor:
         """
         # TODO: Add Code Here!
         for items in list_of_rows:
-            if items['task'] == task:
+            if items['Task'] == task:
                 list_of_rows.remove(items)
             else:
                 continue
@@ -80,6 +89,7 @@ class Processor:
         for items in list_of_rows:
             write_file.write(items['task'] + ',' + items['priority'])
         write_file.close()
+
         return list_of_rows
 
 
@@ -136,7 +146,6 @@ class IO:
         pass  # TODO: Add Code Here!
         task = str(input("Enter a task: "))
         priority = str(input("Enter a priority: "))
-        row_dic = {"Task": task, "Priority": priority}
         return task, priority
 
     @staticmethod
