@@ -49,4 +49,5 @@ print("Number of items:", len(state.items))
 
 # ---------------------------------------------------------------------------- #
 # Learning how to do error handling
+# From: https://www.geeksforgeeks.org/python-exception-handling/
 
