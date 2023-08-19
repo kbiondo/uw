@@ -18,12 +18,13 @@ import pickle
 
 # To pickle a file into an object:
 
-# This example from snyk creates an example game
+# This example from snyk creates an example game that dumps the state of the game into a file called state.bin
 class GameItem:
     def __init__(self, name, cost):
         self.name = name
         self.cost = cost
 
+# this is an example of how a game might save a play state
 class GameState:
     def __init__(self, player_coordinates, obstacles, items):
         self.player_coordinates = player_coordinates
@@ -31,23 +32,54 @@ class GameState:
         self.items = items
 
 # Constructing a specifc state and pickling it into an object:
-player = (3, 2)
+player_coordinates = (3, 2)
 obstacles = { (1, 1), (5, 6), (7, 4), (0, -1) }
 items = [ GameItem("Sword", 500), GameItem("Potion", 150) ]
 
-state = GameState(player, obstacles, items)
-with open("state.bin", "wb") as f: # "wb" because we want to write in binary mode
+ # "wb" because we want to write in binary mode
+state = GameState(player_coordinates, obstacles, items)
+with open("state.bin", "wb") as f:
     pickle.dump(state, f)
 
 # To unpickle a file into an object:
-with open("state.bin", "rb") as f: # "rb" because we want to read in binary mode
+# "rb" because we want to read in binary mode
+with open("state.bin", "rb") as f: 
     state = pickle.load(f)
 
-print("Player coordinates:", state.player)
+print("Player coordinates:", state.player_coordinates)
 print("Obstacles:", state.obstacles)
 print("Number of items:", len(state.items))
 
 # ---------------------------------------------------------------------------- #
 # Learning how to do error handling
 # From: https://www.geeksforgeeks.org/python-exception-handling/
+# this site explains some of the types of error handling that is built into python and how to use them effectively.
 
+# Simple error to handle runtime issues
+a = [1, 2, 3]
+try:
+    print('remember, this list is %d elements long' %(len(a)))
+    print ("Second element = %d" %(a[1]))
+ 
+    # Throws error since there are only 3 elements in array. Position 3 is actually the 4th element.
+    print ("Fourth element = %d" %(a[3]))
+ 
+except:
+    print ("uh oh")
+
+
+# another error example but with using of the finally exception clause:
+ 
+# No exception Exception raised in try block
+try:
+    x = 10/0
+    print(x)
+ 
+#this handles the divide by zero exception
+except ZeroDivisionError:
+    print("no no divide by zero = bad")
+ 
+finally:
+    # this block is always executed
+    # regardless of exception generation.
+    print('Finally is always executed even if you try to divide by zero, which is bad')
