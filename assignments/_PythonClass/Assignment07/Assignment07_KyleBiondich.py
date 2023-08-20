@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------- #
 # Title: Assignment 07
-# Description: Working with classes in a module,
+# Description: Working with pickling and error handling
 # ChangeLog (Who,When,What):
 # KBiondich,8-18-2023,Modified code to complete assignment 07
 # ---------------------------------------------------------------------------- #
@@ -38,13 +38,17 @@ items = [ GameItem("Sword", 500), GameItem("Potion", 150) ]
 
  # "wb" because we want to write in binary mode
 state = GameState(player_coordinates, obstacles, items)
-with open("state.bin", "wb") as f:
-    pickle.dump(state, f)
+saveState = open("saveState.bin", "wb")
+pickle.dump(state, saveState)
 
 # To unpickle a file into an object:
 # "rb" because we want to read in binary mode
-with open("state.bin", "rb") as f: 
-    state = pickle.load(f)
+savedState = open("saveState.bin", "rb") 
+try:
+    state = pickle.load(savedState)
+except EOFError:
+    print("End of file error")
+    state = GameState(player_coordinates, obstacles, items)
 
 print("Player coordinates:", state.player_coordinates)
 print("Obstacles:", state.obstacles)
@@ -65,7 +69,7 @@ try:
     print ("Fourth element = %d" %(a[3]))
  
 except:
-    print ("uh oh")
+    print ("uh oh, you chose a 4th element")
 
 
 # another error example but with using of the finally exception clause:
