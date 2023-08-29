@@ -141,8 +141,14 @@ class IO:
         ''' Gets the menu choice from a user
         :return: string
         '''
-        choice = str(input("Which option would you like to perform? [1 to 4] - ")).strip()
-        print()  # Add an extra line for looks in the terminal window
+        choice = ''
+        try:
+            choice = str(input("Which option would you like to perform? [1 to 4] - ")).strip()
+            if choice.isnumeric() == False:
+                raise Exception("Please enter a number between 1 and 4")
+            print()  # Add an extra line for looks in the terminal window
+        except Exception as e:
+            print(e)
         return choice
 
     # TODO: Add code to show the current data from the file to user
@@ -164,13 +170,20 @@ class IO:
         ''' Gets data for a product object
         :return: (object) product
         '''
-        try:
+        name = None
+        price = 0.0
+        newproduct = None
+    # try:
+        name = str(input("What is the product name? - ")).strip()
+        while name.isnumeric() == True:
+            print("Product names cannot be numbers")
             name = str(input("What is the product name? - ")).strip()
+        try:
             price = float(input("What is the product price? - "))
-            print()  # Add an extra line for looks in the terminal window
-            newproduct = Product(product_name=name, product_price=price)
-        except Exception as e:
-            print(e)
+        except ValueError:
+            print("Product prices must be numbers")
+        print()  # Add an extra line for looks in the terminal window
+        newproduct = Product(product_name=name, product_price=float(price))
         return newproduct
 
 # Presentation (Input/Output)  -------------------------------------------- #
